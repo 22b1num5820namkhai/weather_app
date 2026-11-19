@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Weather App</title><link rel="stylesheet" href="style.css"><script src="script.js" defer></script><script src="register.js" defer></script></head>
+<body>
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></symbol>
+<symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/></symbol>
+<symbol id="cloud" viewBox="0 0 24 24"><path d="M6 20a5 5 0 1 1 4.5-7.2A4 4 0 1 1 17 20Z"/></symbol>
+<symbol id="partly" viewBox="0 0 24 24"><path d="M12 2v2m7 1-1.5 1.5M22 12h-2M5 5l1.5 1.5M9 9a5 5 0 0 1 9 4"/><path d="M6 21a5 5 0 1 1 4.5-7.2A4 4 0 1 1 17 21Z"/></symbol>
+<symbol id="rain" viewBox="0 0 24 24"><path d="M6 15a5 5 0 1 1 4.5-7.2A4 4 0 1 1 17 15ZM7 19l-1 2m6-2-1 2m6-2-1 2"/></symbol>
+<symbol id="snow" viewBox="0 0 24 24"><path d="M12 2v20M3 7l18 10M3 17 21 7M9 4l3 3 3-3M9 20l3-3 3 3"/></symbol>
+</defs></svg>
+<main hidden class="weather-app" data-theme="cloudy">
+<div class="sky" aria-hidden="true"></div><div class="effect" aria-hidden="true"></div>
+<div class="content">
+<header><h1>Weather App</h1><svg class="icon" aria-hidden="true"><use href="#partly"/></svg></header>
+<form id="search-form" role="search"><div class="search-field"><svg class="icon" aria-hidden="true"><use href="#search"/></svg><input id="city-input" type="search" placeholder="Search city..." aria-label="Search city" autocomplete="off" required minlength="2"></div><button type="submit" aria-label="Search"><svg class="icon" aria-hidden="true"><use href="#search"/></svg></button></form>
+<p id="status" role="status" aria-live="polite"></p>
+<section class="current" aria-label="Current weather" aria-live="polite"><svg class="icon weather-icon" aria-hidden="true"><use id="weather-symbol" href="#partly"/></svg><h2 id="city">Ulaanbaatar</h2><p id="data-label">Sample weather data</p><p id="temperature">12°C</p><p id="condition">Partly Cloudy</p><p id="feels-like">Feels like 9°C</p></section>
+<section class="metrics" aria-label="Weather details">
+<article><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3s6 6.5 6 11a6 6 0 0 1-10 4.5M7 4s-4 4.5-4 7a4 4 0 0 0 8 0c0-2.5-4-7-4-7Z"/></svg><h3>Humidity</h3><p id="humidity">45%</p></article>
+<article><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h12a3 3 0 1 0-3-3M3 12h16a2 2 0 1 0-2-2M3 16h10a3 3 0 1 1-3 3"/></svg><h3>Wind</h3><p id="wind">12 km/h</p></article>
+<article><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-8 10-8 10 8 10 8-3.5 8-10 8S2 12 2 12Z"/><circle cx="12" cy="12" r="3.5"/></svg><h3>Visibility</h3><p id="visibility">10 km</p></article>
+</section></div></main>
+<div class="account-bar" hidden><span id="signed-in-user"></span><button id="logout-button" type="button">Log out</button></div>
+<p id="session-message" role="status" aria-live="polite"></p>
+<section class="auth-panel" aria-label="Account">
+
+
+<div class="auth-forms">
+<form id="registerForm" hidden><h2>Register</h2>
+<label>First name<input id="firstName" name="first_name" autocomplete="given-name" maxlength="100" required></label>
+<label>Last name<input id="lastName" name="last_name" autocomplete="family-name" maxlength="100" required></label>
+<label>Email<input id="email" name="email" type="email" autocomplete="email" maxlength="100" required></label>
+<label>Password<input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+<button type="submit">Register</button><p class="auth-message" role="status" aria-live="polite"></p><p>Already registered? <a href="#login" id="show-login">Log in</a></p></form>
+<form id="loginForm"><h2>Log in</h2>
+<label>Email<input id="loginEmail" name="email" type="email" autocomplete="username" maxlength="100" required></label>
+<label>Password<input id="loginPassword" name="password" type="password" autocomplete="current-password" required></label>
+<button type="submit">Log in</button><p class="auth-message" role="status" aria-live="polite"></p><p>Don't have an account? <a href="#register" id="show-register">Register</a></p></form>
+</div><div class="google-login"><p>or</p><div id="google-button"></div><p id="google-message" role="status" aria-live="polite"></p></div></section>
+<footer><span>Weather, at a glance.</span><a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Weather data by Open-Meteo</a></footer>
+</body></html>
